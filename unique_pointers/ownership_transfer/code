@@ -1,0 +1,12 @@
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    // Creating a unique pointer here. 
+    std::unique_ptr<int> unique_pointer_a = std::make_unique<int>(42);
+    std::unique_ptr<int> unique_pointer_b = std::move(unique_pointer_a);
+
+    // Printing the contents of the unique pointer by dereferencing it.
+    std::cout << (unique_pointer_b ? *unique_pointer_b : 0) << std::endl;
+}
