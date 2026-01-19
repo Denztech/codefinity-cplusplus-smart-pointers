@@ -1,0 +1,24 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
+int main()
+{
+    // Assuming you have a shared pointer to a string
+    std::shared_ptr<std::string> p_shared_string = std::make_shared<std::string>("Hello, World!");
+
+    // Create a weak pointer from the shared pointer
+    std::weak_ptr<std::string> p_weak_string(p_shared_string);
+
+
+    // Convert the weak pointer to a shared pointer to access the string
+    std::shared_ptr<std::string> p_another_shared_string = p_weak_string.lock();
+
+    // Check if the shared pointer is valid before accessing the string
+    if (p_another_shared_string)
+
+        // Print the value of the string
+        std::cout << *p_another_shared_string << std::endl;
+    else
+        std::cout << "The string has already been deleted." << std::endl;
+}
